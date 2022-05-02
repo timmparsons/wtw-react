@@ -41,5 +41,3 @@ const HeaderButton = (props) => (
 )
 
 export default HeaderTabs;
-
-const styles = StyleSheet.create({})
