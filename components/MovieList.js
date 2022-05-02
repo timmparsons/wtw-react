@@ -3,13 +3,13 @@ import { StyleSheet, Text, View, FlatList, StatusBar, SafeAreaView } from 'react
 import { useDispatch, useSelector } from 'react-redux';
 
 const MovieList = () => {
-  const [ movies, setMovies ] = useState([]);
+  const dispatch = useDispatch();
   const { name } = useSelector((state) => state.movie);
   console.log('zzz', name)
   useEffect(() => {
     fetch('https://api.themoviedb.org/3/trending/all/day?api_key=d5826b4e12c757147537031e74238c63')
       .then(response => response.json())
-      .then(data => setMovies(data.results))
+      .then(data => dispatch(setTrendingMovies(data.results)))
   }, [])
 
   const Item = ({ title, description }) => (
