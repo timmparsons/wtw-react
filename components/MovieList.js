@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, FlatList, StatusBar, SafeAreaView } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux';
 
 const MovieList = () => {
   const [ movies, setMovies ] = useState([]);
-  // const data = [ { id: 1, title: 'Black', description: 'Some description...' } ]
+  const { name } = useSelector((state) => state.movie);
+  console.log('zzz', name)
   useEffect(() => {
     fetch('https://api.themoviedb.org/3/trending/all/day?api_key=d5826b4e12c757147537031e74238c63')
       .then(response => response.json())
