@@ -4,18 +4,18 @@ const initialState = {
   name: 'batman'
 }
 
-export const movieSlice = createSlice({
-  name: 'movie',
+export const moviesSlice = createSlice({
+  name: 'movies',
   initialState,
   reducers: {
-    getMovie: (state, action) => {
+    getMovies: (state, action) => {
       state.name = action.payload;
     }
   }
 })
 
-export const { getMovie } = movieSlice.actions;
+export const { getMovies } = moviesSlice.actions;
 
 export const selectMovie = (state) => state.movies.name;
 
-export default movieSlice.reducer;
+export default moviesSlice.reducer;
