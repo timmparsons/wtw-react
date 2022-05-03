@@ -10,7 +10,7 @@ export const moviesSlice = createSlice({
   reducers: {
     setTrendingMovies: (state, action) => {
       // console.log('qqq', action.payload)
-      state.movies = action.payload.results;
+      state.movies = action.payload;
     }
   }
 })
