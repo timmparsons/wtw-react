@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, FlatList, StatusBar, SafeAreaView } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { getMovies } from '../store/slices/moviesSlice'
 
 const MovieList = () => {
-  const [ movies, setMovies ] = useState([]);
-  const { name } = useSelector((state) => state.movie);
-  console.log('zzz', name)
-  useEffect(() => {
-    fetch('https://api.themoviedb.org/3/trending/all/day?api_key=d5826b4e12c757147537031e74238c63')
-      .then(response => response.json())
-      .then(data => setMovies(data.results))
-  }, [])
+  const movies = useSelector(getMovies);
 
   const Item = ({ title, description }) => (
     <View>
@@ -20,9 +14,9 @@ const MovieList = () => {
   );
 
   const renderItem = ({ item }) => (
-    <Item title={item.title} description={item.overview} />
+    <Item title={item.title || item.name} description={item.overview} />
   );
-
+  console.log('zzz', movies)
   return (
     <View style={styles.container}>
       {movies && <FlatList
