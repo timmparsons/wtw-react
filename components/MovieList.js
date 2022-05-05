@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, FlatList, StatusBar, SafeAreaView } from 'react-native'
 import { useSelector } from 'react-redux';
 import { getMovies } from '../store/slices/moviesSlice'
-import { selectMovies } from '../selectors/index';
 
 const MovieList = () => {
   const movies = useSelector(getMovies);
@@ -15,9 +14,9 @@ const MovieList = () => {
   );
 
   const renderItem = ({ item }) => (
-    <Item title={item.title} description={item.overview} />
+    <Item title={item.title || item.name} description={item.overview} />
   );
-  console.log('zzz', useSelector(getMovies))
+  console.log('zzz', movies)
   return (
     <View style={styles.container}>
       {movies && <FlatList

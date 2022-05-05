@@ -1,4 +1,4 @@
-import { createSlice, createSelector } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   movieList: []
@@ -9,9 +9,7 @@ export const moviesSlice = createSlice({
   initialState,
   reducers: {
     setTrendingMovies: (state, action) => {
-      // console.log('qqq', action.payload)
       state.movieList = action.payload;
-      // console.log('qqq1', state.movies)
     }
   }
 })
@@ -19,6 +17,6 @@ export const moviesSlice = createSlice({
 export const { setTrendingMovies } = moviesSlice.actions;
 
 //selectors
-export const getMovies = state => state.movie;
+export const getMovies = state => state.movies.movieList;
 
 export default moviesSlice.reducer;
