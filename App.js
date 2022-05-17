@@ -3,8 +3,11 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import Home from './screens/Home';
+import Settings from './screens/Settings';
 import { useDispatch } from 'react-redux';
 import { setTrendingMovies } from './store/slices/moviesSlice';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
 
 const AppWrapper = () => {
   return (
@@ -14,6 +17,7 @@ const AppWrapper = () => {
   );
 }
 const App = () => {
+  const Tab = createBottomTabNavigator();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,7 +29,14 @@ const App = () => {
   }, [])
 
   return (
-    <Home />
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="My List" component={Settings} />
+        <Tab.Screen name="Friends" component={Settings} />
+        <Tab.Screen name="Profile" component={Settings} />
+      </Tab.Navigator>
+    </NavigationContainer>
   )
 }
 

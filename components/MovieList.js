@@ -16,7 +16,7 @@ const MovieList = () => {
   const renderItem = ({ item }) => (
     <Item title={item.title || item.name} description={item.overview} />
   );
-  console.log('zzz', movies)
+
   return (
     <View style={styles.container}>
       {movies && <FlatList
