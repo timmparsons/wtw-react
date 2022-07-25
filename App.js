@@ -8,12 +8,15 @@ import { useDispatch } from 'react-redux';
 import { setTrendingMovies } from './store/slices/moviesSlice';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { TailwindProvider } from "tailwindcss-react-native";
 
 const AppWrapper = () => {
   return (
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <TailwindProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </TailwindProvider>
   );
 }
 const App = () => {
