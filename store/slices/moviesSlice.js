@@ -17,8 +17,8 @@ export const moviesSlice = createSlice({
 export const { setTrendingMovies } = moviesSlice.actions;
 
 //selectors
-export const getMovies = state => state.movies.movieList;
-export const getMovieImages = createSelector(getMovies, movies => {
-  return movies.map(movie => movie.poster_path)
-})
+export const getTrendingMovies = state => state.movies.movieList;
+export const getMovieImages = createSelector(getTrendingMovies, movies => (
+  movies.map(movie => movie.poster_path)
+))
 export default moviesSlice.reducer;

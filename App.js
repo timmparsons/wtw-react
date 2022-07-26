@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import Home from './screens/Home';
+import HomeScreen from './screens/HomeScreen';
 import Settings from './screens/Settings';
 import { useDispatch } from 'react-redux';
 import { setTrendingMovies } from './store/slices/moviesSlice';
@@ -34,7 +34,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="HomeScreen" component={HomeScreen} />
         <Tab.Screen name="My List" component={Settings} />
         <Tab.Screen name="Friends" component={Settings} />
         <Tab.Screen name="Profile" component={Settings} />
