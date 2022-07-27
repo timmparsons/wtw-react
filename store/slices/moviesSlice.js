@@ -21,4 +21,5 @@ export const getTrendingMovies = state => state.movies.movieList;
 export const getMovieImages = createSelector(getTrendingMovies, movies => (
   movies.map(movie => movie.poster_path)
 ))
+
 export default moviesSlice.reducer;
