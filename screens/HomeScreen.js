@@ -48,7 +48,9 @@ const HomeScreen = () => {
         }}>
 
         {/* Trending */}
-        <TrendingMovieList title='Trending' />
+        <View className='w-50'>
+          <TrendingMovieList title='Trending' />
+        </View>
 
         {/* Top Movies */}
         <TopMovies />

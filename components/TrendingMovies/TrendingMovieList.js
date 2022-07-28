@@ -6,12 +6,12 @@ import MovieItem from './MovieItem';
 
 const TrendingMovieList = ({ title }) => {
   const trendingMovieImage = useSelector(getTrendingMovies);
-
+  console.log('CLICK', trendingMovieImage)
   return (
     <ScrollView
       contentContainerStyle={{
         paddingHorizontal: 15,
-        padding: 10,
+        padding: 30,
       }}
       horizontal
       showsHorizontalScrollIndicator={false}>
