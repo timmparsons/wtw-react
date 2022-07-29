@@ -8,9 +8,12 @@ export const moviesSlice = createSlice({
   name: 'movieSlice',
   initialState,
   reducers: {
-    setTrendingMovies: (state, action) => {
+    initialize: (state) => {
       state.movieList = action.payload;
-    }
+    },
+    // setTrendingMovies: (state, action) => {
+    //   state.movieList = action.payload;
+    // }
   }
 })
 
