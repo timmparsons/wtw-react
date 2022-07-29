@@ -23,13 +23,13 @@ const App = () => {
   const Tab = createBottomTabNavigator();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    fetch('https://api.themoviedb.org/3/trending/all/day?api_key=d5826b4e12c757147537031e74238c63')
-      .then(response => response.json())
-      .then(data => {
-        dispatch(setTrendingMovies(data.results))
-      })
-  }, [])
+  // useEffect(() => {
+  //   fetch('https://api.themoviedb.org/3/trending/all/day?api_key=d5826b4e12c757147537031e74238c63')
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       dispatch(setTrendingMovies(data.results))
+  //     })
+  // }, [])
 
   return (
     <NavigationContainer>
