@@ -9,6 +9,7 @@ import { setTrendingMovies } from './store/slices/moviesSlice';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { TailwindProvider } from "tailwindcss-react-native";
+import { initialize } from './store/actions/initialize';
 
 const AppWrapper = () => {
   return (
@@ -23,13 +24,9 @@ const App = () => {
   const Tab = createBottomTabNavigator();
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   fetch('https://api.themoviedb.org/3/trending/all/day?api_key=d5826b4e12c757147537031e74238c63')
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       dispatch(setTrendingMovies(data.results))
-  //     })
-  // }, [])
+  useEffect(() => {
+    dispatch(initialize())
+  }, [])
 
   return (
     <NavigationContainer>

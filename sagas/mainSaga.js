@@ -1,16 +1,21 @@
 import { setTrendingMovies } from '../store/slices/moviesSlice';
-import { takeEvery } from 'redux-saga/effects'
+import { takeEvery, put, call } from 'redux-saga/effects'
 import { endpoints } from '../api/endpoints';
 import { initialize } from '../store/actions/initialize';
 
 function* fetchTrendingMovies() {
-  console.log('ACTION CALLED')
-  fetch(endpoints.trending)
+  const response = yield call(callApiSaga, endpoints.trending)
+  yield put(setTrendingMovies(response.results))
+};
+
+function* callApiSaga(endpoint) {
+  fetch(endpoint)
     .then(response => response.json())
     .then(data => {
-      dispatch(setTrendingMovies(data.results))
+      console.log('qqq1', data)
+      return data
     })
-};
+}
 
 function* mainSaga() {
   yield takeEvery(initialize, fetchTrendingMovies);
