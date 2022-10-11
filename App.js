@@ -5,11 +5,10 @@ import { store } from './store';
 import HomeScreen from './screens/HomeScreen';
 import Settings from './screens/Settings';
 import { useDispatch } from 'react-redux';
-import { setTrendingMovies } from './store/slices/moviesSlice';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { TailwindProvider } from "tailwindcss-react-native";
-import { initialize } from './store/actions/initialize';
+import { initialize } from './redux/actions/initialize';
 
 const AppWrapper = () => {
   return (
