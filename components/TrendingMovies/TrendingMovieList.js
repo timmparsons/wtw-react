@@ -1,12 +1,11 @@
 import React from 'react'
 import { Text, ScrollView } from 'react-native'
 import { useSelector } from 'react-redux';
-import { getTrendingMovies } from '../../store/slices/moviesSlice';
+import { getTrendingMovies } from '../../redux/slices/moviesSlice';
 import MovieItem from './MovieItem';
 
 const TrendingMovieList = ({ title }) => {
   const trendingMovieImage = useSelector(getTrendingMovies);
-  console.log('CLICK', trendingMovieImage)
   return (
     <ScrollView
       contentContainerStyle={{

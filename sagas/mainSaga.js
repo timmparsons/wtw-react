@@ -1,17 +1,25 @@
-import { setTrendingMovies } from '../store/slices/moviesSlice';
-import { takeEvery } from 'redux-saga/effects'
+import { setTrendingMovies } from '../redux/slices/moviesSlice';
+import { takeEvery, put, call } from 'redux-saga/effects'
+import { fetchTrending } from '../api/endpoints';
+import { initialize } from '../redux/actions/initialize';
+import endpoints from '../api/endpoints';
 
-function* fetchTrendingMovies() {
-  console.log('ACTION CALLED')
-  // fetch('https://api.themoviedb.org/3/trending/all/day?api_key=d5826b4e12c757147537031e74238c63')
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     dispatch(setTrendingMovies(data.results))
-  //   })
+function* fetchTrendingMoviesSaga() {
+  const response = yield call(callApiSaga, endpoints.fetchTending)
+  yield put(setTrendingMovies(response.results))
 };
 
+function* callApiSaga(endpoint) {
+  fetch(endpoint)
+    .then(response => response.json())
+    .then(data => {
+      console.log('qqq1', data)
+      return data
+    })
+}
+
 function* mainSaga() {
-  yield takeEvery('moviesSlice/getTrendingMovies', fetchTrendingMovies);
+  yield takeEvery(initialize, fetchTrendingMoviesSaga);
 }
 
 export default mainSaga;
